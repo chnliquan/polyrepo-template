@@ -1,0 +1,6 @@
+# javascripts
+bin/
+scripts/
+
+# tests
+__tests__/
