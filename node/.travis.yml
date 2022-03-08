@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - '12'
+cache: npm
+env:
+  - CI=true
+script:
+  - npm run test:once
+after_success:
+  - npm run coverage
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: ./dist
+  on:
+    branch: master
