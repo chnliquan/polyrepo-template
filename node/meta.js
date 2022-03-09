@@ -1,26 +1,22 @@
 module.exports = [
+  <% if (cli) { %>
   {
-    name: 'cli',
+    name: 'cliType',
     message: 'Does the project provide a command line?',
     type: 'list',
     default: true,
     choices: [
       {
-        name: 'Yes, with one command',
+        name: 'Yes, this project will provide only one command line',
         value: 'single',
-        source: ['./bin/<%= name %>'],
       },
       {
-        name: 'Yes, with multiple command',
+        name: 'Yes, this project will provide more than one command line',
         value: 'multiple',
-        source: ['./bin/<%= name %>'],
-      },
-      {
-        name: 'No',
-        value: 'no',
-      },
+      }
     ],
   },
+  <% } %>
   {
     name: 'platform',
     message: 'Please choose the platform of your project:',
