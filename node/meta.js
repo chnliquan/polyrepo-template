@@ -1,5 +1,5 @@
 module.exports = [
-  <% if (cli) { %>
+  <% if (locals.cli) { %>
   {
     name: 'cliType',
     message: 'Does the project provide a command line?',

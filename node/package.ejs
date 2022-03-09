@@ -1,17 +1,17 @@
 {
-  "name": "<%= name %>",
+  "name": "<%= locals.name %>",
   "version": "0.0.0",
-  "description": "<%= description %>",
+  "description": "<%= locals.description %>",
   "keywords": [
-    "<%= name %>"
+    "<%= locals.name %>"
   ],
-  "main": "dist/<%= name %>.cjs.js",
-  "module": "dist/<%= name %>.esm.js",<% if (cli) { %>
+  "main": "dist/<%= locals.name %>.cjs.js",
+  "module": "dist/<%= locals.name %>.esm.js",<% if (locals.cli) { %>
   "bin": {
-    "<%= name %>": "bin/<%= name %>.js"
+    "<%= locals.name %>": "bin/<%= locals.name %>.js"
   },<% } %>
-  "types": "dist/<%= name %>.d.ts",
-  "files": [<% if (cli) { %>
+  "types": "dist/<%= locals.name %>.d.ts",
+  "files": [<% if (locals.cli) { %>
     "bin",<% } %>
     "dist"
   ],
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.1",
-    "commander": "^7.2.0"<% if (cli === 'multiple') { %>,
+    "commander": "^7.2.0"<% if (locals.cli === 'multiple') { %>,
     "leven": "^3.1.0"<% } %>
   },
   "devDependencies": {
@@ -63,11 +63,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "<%= gitUrl %>"
+    "url": "<%= locals.gitUrl %>"
   },
-  "homepage": "<%= gitHref %>#readme",
+  "homepage": "<%= locals.gitHref %>#readme",
   "bugs": {
-    "url": "<%= gitHref %>/issues"
+    "url": "<%= locals.gitHref %>/issues"
   },
   "husky": {
     "hooks": {
@@ -82,9 +82,9 @@
       "git add"
     ]
   },
-  "author": "<%= author %>",
+  "author": "<%= locals.author %>",
   "publishConfig": {
-    "registry": "<%= registry %>",
+    "registry": "<%= locals.registry %>",
     "access": "public"
   },
   "license": "MIT"

@@ -4,7 +4,7 @@
 
 const { program } = require('commander')
 const chalk = require('chalk')
-<% if (multiple) { %>const leven = require('leven')<% } %>
+<% if (locals.multiple) { %>const leven = require('leven')<% } %>
 const pkg = require('../package.json')
 
 if (pkg.private) {
@@ -15,7 +15,7 @@ if (pkg.private) {
   )
   process.exit(1)
 }
-<% if (multiple) { %>
+<% if (locals.multiple) { %>
 program
   .version(pkg.version, '-v, --version', 'Output the current version')
   .usage('<command> [options]')
@@ -43,7 +43,7 @@ program
 // add some useful info on help
 program.on('--help', () => {
   console.log()
-  console.log(`  Run ${chalk.cyan(`<%= name %> <command> --help`)} for detailed usage of given command.`)
+  console.log(`  Run ${chalk.cyan(`<%= locals.name %> <command> --help`)} for detailed usage of given command.`)
   console.log()
 })
 
@@ -65,7 +65,7 @@ enhanceErrorMessages('optionMissingArgument', (option, flag) => {
 })
 
 program.parse(process.argv)
-<% if (multiple) { %>
+<% if (locals.multiple) { %>
 if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
@@ -85,7 +85,7 @@ function enhanceErrorMessages(methodName, log) {
     process.exit(1)
   }
 }
-<% if (multiple) { %>
+<% if (locals.multiple) { %>
 function suggestCommands (unknownCommand) {
   const availableCommands = program.commands.map(cmd => cmd._name)
 
