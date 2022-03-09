@@ -10,13 +10,13 @@
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "console": "integratedTerminal"
-    },<% if (cli) { %>
+    },<% if (locals.cli) { %>
     {
       "type": "node",
       "request": "launch",
       "name": "Bin scaffold",
       "program": "${workspaceRoot}/node_modules/ts-node/dist/bin.js",
-      "args": ["bin/<%= name %>.js"],
+      "args": ["bin/<%= locals.name %>.js"],
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "console": "integratedTerminal"

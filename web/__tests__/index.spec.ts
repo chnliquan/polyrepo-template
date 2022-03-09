@@ -1,6 +1,6 @@
 'use strict'
 
-describe('<%= name %>', () => {
+describe('<%= locals.name %>', () => {
   it('test true', () => {
     expect(true).toBe(true)
   })

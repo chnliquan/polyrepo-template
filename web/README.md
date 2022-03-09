@@ -1,16 +1,15 @@
-# <%= name %>
+# <%= locals.name %>
 
-<%= description %>
+<%= locals.description %>
 
 ## Install
 
 ```bash
-$ npm i <%= name %> --save-dev
+$ npm i <%= locals.name %> --save-dev
 ```
 
 ```bash
-$ yarn add <%= name %>
+$ yarn add <%= locals.name %>
 ```
 
 ## Usage
-
