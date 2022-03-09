@@ -6,12 +6,12 @@
     "<%= name %>"
   ],
   "main": "dist/<%= name %>.cjs.js",
-  "module": "dist/<%= name %>.esm.js",<% if (cli === 'single' || cli === 'multiple') { %>
+  "module": "dist/<%= name %>.esm.js",<% if (cli) { %>
   "bin": {
     "<%= name %>": "bin/<%= name %>.js"
   },<% } %>
   "types": "dist/<%= name %>.d.ts",
-  "files": [<% if (cli === 'single' || cli === 'multiple') { %>
+  "files": [<% if (cli) { %>
     "bin",<% } %>
     "dist"
   ],
@@ -84,7 +84,7 @@
   },
   "author": "<%= author %>",
   "publishConfig": {
-    "registry": "<% if (platform === 'github') { %>https://registry.npm.org<% } else { %><%= registry %><% } %>",
+    "registry": "<%= registry %>",
     "access": "public"
   },
   "license": "MIT"

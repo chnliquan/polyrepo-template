@@ -4,7 +4,7 @@
 
 const { program } = require('commander')
 const chalk = require('chalk')
-<% if (cli === 'multiple') { %>const leven = require('leven')<% } %>
+<% if (multiple) { %>const leven = require('leven')<% } %>
 const pkg = require('../package.json')
 
 if (pkg.private) {
@@ -15,7 +15,7 @@ if (pkg.private) {
   )
   process.exit(1)
 }
-<% if (cli === 'multiple') { %>
+<% if (multiple) { %>
 program
   .version(pkg.version, '-v, --version', 'Output the current version')
   .usage('<command> [options]')
@@ -65,7 +65,7 @@ enhanceErrorMessages('optionMissingArgument', (option, flag) => {
 })
 
 program.parse(process.argv)
-<% if (cli === 'multiple') { %>
+<% if (multiple) { %>
 if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
@@ -85,7 +85,7 @@ function enhanceErrorMessages(methodName, log) {
     process.exit(1)
   }
 }
-<% if (cli === 'multiple') { %>
+<% if (multiple) { %>
 function suggestCommands (unknownCommand) {
   const availableCommands = program.commands.map(cmd => cmd._name)
 
