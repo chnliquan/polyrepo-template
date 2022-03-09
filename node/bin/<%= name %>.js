@@ -65,7 +65,7 @@ enhanceErrorMessages('optionMissingArgument', (option, flag) => {
 })
 
 program.parse(process.argv)
-<% if (multiple) { %>
+<% if (cli === 'multiple') { %>
 if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
@@ -85,7 +85,7 @@ function enhanceErrorMessages(methodName, log) {
     process.exit(1)
   }
 }
-<% if (multiple) { %>
+<% if (cli === 'multiple') { %>
 function suggestCommands (unknownCommand) {
   const availableCommands = program.commands.map(cmd => cmd._name)
 
