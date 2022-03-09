@@ -1,4 +1,4 @@
-<% if (multiple) { %>
+<% if (cli === 'multiple') { %>
 export function run(name: string, options: Record<string, unknown>) {
   
 }
