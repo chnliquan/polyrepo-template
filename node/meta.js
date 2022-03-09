@@ -7,11 +7,11 @@ module.exports = [
     default: true,
     choices: [
       {
-        name: 'Yes, this project will provide only one command line',
+        name: 'This project will provide only one command line',
         value: 'single',
       },
       {
-        name: 'Yes, this project will provide more than one command line',
+        name: 'This project will provide more than one command line',
         value: 'multiple',
       }
     ],
