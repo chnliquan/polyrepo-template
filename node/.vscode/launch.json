@@ -10,7 +10,7 @@
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "console": "integratedTerminal"
-    },<% if (single || multiple) { %>
+    },<% if (cli === 'single' || cli === 'multiple') { %>
     {
       "type": "node",
       "request": "launch",
