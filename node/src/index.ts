@@ -1,4 +1,4 @@
-<% if (cli === 'multiple') { %>
+<% if (locals.cli === 'multiple') { %>
 export function run(name: string, options: Record<string, unknown>) {
   
 }
