@@ -7,7 +7,7 @@ module.exports = [
       {
         name: 'github',
         value: 'github',
-        source: ['./.github', '.travis.yml'],
+        source: ['.github', '.travis.yml'],
       },
       {
         name: 'gitlab',
