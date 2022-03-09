@@ -4,7 +4,7 @@
 
 const { program } = require('commander')
 const chalk = require('chalk')
-<% if (multiple) { %>const leven = require('leven')<% } %>
+<% if (cli === 'multiple') { %>const leven = require('leven')<% } %>
 const pkg = require('../package.json')
 
 if (pkg.private) {
@@ -15,7 +15,7 @@ if (pkg.private) {
   )
   process.exit(1)
 }
-<% if (multiple) { %>
+<% if (cli === 'multiple') { %>
 program
   .version(pkg.version, '-v, --version', 'Output the current version')
   .usage('<command> [options]')
