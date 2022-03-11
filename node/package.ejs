@@ -22,7 +22,7 @@
     "format": "prettier --write 'src/**/*.@(js|ts)'",
     "test": "npm run test:once -- --watch",
     "test:once": "jest --runInBand --colors --forceExit",
-    "coverage": "codecov",
+    "coverage": "<% if (locals.github) { %>codecov<% } else { %>jest --coverage<% } %>",
     "release": "node scripts/release.js"
   },
   "dependencies": {
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
-    "@eljs/release": "^0.5.2",
+    "@eljs/release": "^0.6.0",
     "@microsoft/api-extractor": "^7.19.4",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-json": "^4.1.0",
@@ -44,8 +44,8 @@
     "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
-    "chalk": "^4.1.2",
-    "codecov": "^3.8.3",
+    "chalk": "^4.1.2",<% if (locals.github) { %>
+    "codecov": "^3.8.3",<% } %>
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "execa": "^5.1.1",
@@ -76,7 +76,7 @@
     }
   },
   "lint-staged": {
-    "{bin,src,test}/**/*.{js,ts}": [
+    "{<% if (locals.cli) { %>bin<% } %>,src,__tests__}/**/*.{js,ts}": [
       "prettier --write",
       "eslint --fix",
       "git add"
