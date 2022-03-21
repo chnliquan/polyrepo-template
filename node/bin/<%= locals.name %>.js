@@ -25,7 +25,7 @@ program
   .description('command description')
   .option('-r, --registry <url>', 'Use specified npm registry when installing dependencies')
   .action((name, options) => {
-    require('../lib/index')(name, options)
+    require('../dist/<%= locals.name %>.cjs')(name, options)
   })
 
 // output help information on unknown commands
@@ -70,7 +70,7 @@ if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
 <% } else { %>
-require('../lib/index')(program._optionValues)
+require('../dist/<%= locals.name %>.cjs')(program._optionValues)
 <% } %>
 function enhanceErrorMessages(methodName, log) {
   program.Command.prototype[methodName] = function (...args) {

@@ -14,7 +14,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Bin scaffold",
+      "name": "Bin <%= locals.name %>",
       "program": "${workspaceRoot}/node_modules/ts-node/dist/bin.js",
       "args": ["bin/<%= locals.name %>.js"],
       "cwd": "${workspaceRoot}",
