@@ -2,14 +2,38 @@
 
 <%= locals.description %>
 
-## Install
+# Getting Started
 
 ```bash
-$ npm i <%= locals.name %> --save-dev
+
 ```
+
+# Development
+
+1. Download
 
 ```bash
-$ yarn add <%= locals.name %>
+$ git clone <%= locals.gitUrl %>
 ```
 
-## Usage
+2. Install dependencies
+   
+```bash
+$ npm i
+// or
+$ yarn i
+```
+
+3. Commit semantically
+
+https://www.conventionalcommits.org/en/v1.0.0/#summary
+
+4. Publish
+
+```bash
+$ pnpm run release
+```
+
+# LICENSE
+
+[MIT](<%= locals.gitHref %>/blob/master/LICENSE)
