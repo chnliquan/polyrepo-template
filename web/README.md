@@ -5,7 +5,9 @@
 # Getting Started
 
 ```bash
-
+$ npm i <%= locals.name %> --save
+// or
+$ yarn i <%= locals.name %>
 ```
 
 # Development
