@@ -14,9 +14,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Bin <%= locals.name %>",
+      "name": "Bin <%= locals.shortName %>",
       "program": "${workspaceRoot}/node_modules/ts-node/dist/bin.js",
-      "args": ["bin/<%= locals.name %>.js"],
+      "args": ["bin/<%= locals.shortName %>.js"],
       "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "console": "integratedTerminal"

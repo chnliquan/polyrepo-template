@@ -25,7 +25,7 @@ program
   .description('command description')
   .option('-r, --registry <url>', 'Use specified npm registry when installing dependencies')
   .action((name, options) => {
-    require('../dist/<%= locals.name %>.cjs')(name, options)
+    require('../dist/<%= locals.shortName %>.cjs')(name, options)
   })
 
 // output help information on unknown commands
@@ -43,7 +43,7 @@ program
 // add some useful info on help
 program.on('--help', () => {
   console.log()
-  console.log(`  Run ${chalk.cyan(`<%= locals.name %> <command> --help`)} for detailed usage of given command.`)
+  console.log(`  Run ${chalk.cyan(`<%= locals.shortName %> <command> --help`)} for detailed usage of given command.`)
   console.log()
 })
 
@@ -70,7 +70,7 @@ if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
 <% } else { %>
-require('../dist/<%= locals.name %>.cjs')(program._optionValues)
+require('../dist/<%= locals.shortName %>.cjs')(program._optionValues)
 <% } %>
 function enhanceErrorMessages(methodName, log) {
   program.Command.prototype[methodName] = function (...args) {

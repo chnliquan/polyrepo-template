@@ -24,14 +24,20 @@ $ npm i
 $ yarn i
 ```
 
-3. Commit semantically
+3. Watch Change
+   
+```bash
+$ npm run dev
+```
+
+4. Commit semantically
 
 https://www.conventionalcommits.org/en/v1.0.0/#summary
 
-4. Publish
+5. Publish
 
 ```bash
-$ pnpm run release
+$ npm run release
 ```
 
 # LICENSE
