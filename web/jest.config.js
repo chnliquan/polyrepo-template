@@ -20,9 +20,12 @@ module.exports = {
   },
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'lcov', 'text'],
-  collectCoverageFrom: ['src/**/*.ts'],
+  collectCoverageFrom: ['/src/**/*.ts'],
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  moduleNameMapper: {
+    '^@<%= locals.shortName %>/(.*?)$': '<rootDir>/packages/$1/src',
+  },
   testMatch: ['<rootDir>/__tests__/**/*spec.[jt]s?(x)'],
   testPathIgnorePatterns: ['/node_modules/', '/examples/__tests__'],
 }
