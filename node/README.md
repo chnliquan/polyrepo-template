@@ -4,11 +4,47 @@
 
 # Getting Started
 
+1. Installation
+
 ```bash
-$ npm i <%= locals.name %> --save
+$ npm i <%= locals.name %> <% if (locals.cli) { %>-D<% } else { %>-S<% } %>
 // or
 $ yarn i <%= locals.name %>
 ```
+
+2. Usage
+   <% if (locals.cli) { %>
+
+```bash
+Usage: <%= locals.shortName %> <command> [options]
+
+Options:
+  -v, --version                  output the current version
+  -h, --help                     display help for command
+
+Commands:
+
+```
+
+<% } else { %>
+
+```ts
+import <%= locals.shortName %> from '<%= locals.name %>'
+```
+
+<% } %>
+
+<% if (locals.cli) { %>
+
+# Commands
+
+# Options
+
+<% } else { %>
+
+# API
+
+<% } %>
 
 # Development
 
@@ -19,7 +55,7 @@ $ git clone <%= locals.gitUrl %>
 ```
 
 2. Install dependencies
-   
+
 ```bash
 $ npm i
 // or
@@ -27,7 +63,7 @@ $ yarn i
 ```
 
 3. Watch Change
-   
+
 ```bash
 $ npm run dev
 ```

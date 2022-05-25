@@ -12,19 +12,7 @@
       "args": ["-O", "{\"module\": \"commonjs\"}", "--files", "${file}"],
       "cwd": "${workspaceRoot}",
       "console": "integratedTerminal"
-    },<% if (locals.cli) { %>
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Bin <%= locals.shortName %>",
-      "program": "${workspaceRoot}/node_modules/ts-node/dist/bin.js",
-      "windows": {
-        "program": "${workspaceFolder}/node_modules/ts-node/bin/ts-node"
-      },
-      "args": ["bin/<%= locals.shortName %>.js"],
-      "cwd": "${workspaceRoot}",
-      "console": "integratedTerminal"
-    },<% } %>
+    },
     {
       "type": "node",
       "request": "launch",
@@ -37,6 +25,18 @@
       "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    }
+    }<% if (locals.cli) { %>,
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Bin <%= locals.shortName %>",
+      "program": "${workspaceRoot}/node_modules/ts-node/dist/bin.js",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/ts-node/bin/ts-node"
+      },
+      "args": ["bin/<%= locals.shortName %>.js"],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal"
+    }<% } %>
   ]
 }

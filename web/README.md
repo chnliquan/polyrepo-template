@@ -4,11 +4,21 @@
 
 # Getting Started
 
+1. Installation
+
 ```bash
-$ npm i <%= locals.name %> --save
+$ npm i <%= locals.name %> -S
 // or
 $ yarn i <%= locals.name %>
 ```
+
+2. Usage
+
+```ts
+import <%= locals.shortName %> from '<%= locals.name %>'
+```
+
+# API
 
 # Development
 
@@ -19,7 +29,7 @@ $ git clone <%= locals.gitUrl %>
 ```
 
 2. Install dependencies
-   
+
 ```bash
 $ npm i
 // or
@@ -27,7 +37,7 @@ $ yarn i
 ```
 
 3. Watch Change
-   
+
 ```bash
 $ npm run dev
 ```
