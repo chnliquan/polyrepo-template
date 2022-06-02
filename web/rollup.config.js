@@ -1,9 +1,11 @@
 import path from 'path'
 import ts from 'rollup-plugin-typescript2'
+import json from '@rollup/plugin-json'
 import replace from '@rollup/plugin-replace'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import json from '@rollup/plugin-json'
+import postcss from 'rollup-plugin-postcss'
+import image from '@rollup/plugin-image'
 
 const { resolveRoot } = require('./scripts/utils')
 
@@ -35,6 +37,22 @@ const packageFormats = inlineFormats || defaultFormats
 const packageConfigs = process.env.PROD_ONLY
   ? []
   : packageFormats.map(format => createConfig(format, outputConfigs[format]))
+
+if (process.env.NODE_ENV === 'production') {
+  packageFormats.forEach(format => {
+    if (packageOptions.prod === false) {
+      return
+    }
+
+    if (format === 'cjs') {
+      packageConfigs.push(createProductionConfig(format))
+    }
+
+    if (/^(global|esm)(-runtime)?/.test(format)) {
+      packageConfigs.push(createMinifiedConfig(format))
+    }
+  })
+}
 
 export default packageConfigs
 
@@ -89,13 +107,15 @@ function createConfig(format, output, plugins = []) {
     input: resolveRoot(entryFile),
     external,
     plugins: [
+      tsPlugin,
       json({
         namedExports: false,
       }),
-      tsPlugin,
       createReplacePlugin(isProductionBuild, isESMBuild, isGlobalBuild, isNodeBuild),
       nodeResolve(),
       commonjs(),
+      postcss(),
+      image(),
       ...plugins,
     ],
     output,
@@ -103,9 +123,6 @@ function createConfig(format, output, plugins = []) {
       if (!/Circular/.test(msg)) {
         warn(msg)
       }
-    },
-    treeshake: {
-      moduleSideEffects: false,
     },
     watch: {
       exclude: ['node_modules/**', 'dist/**'],
@@ -137,4 +154,33 @@ function createReplacePlugin(isProduction, isESMBuild, isGlobalBuild, isNodeBuil
     values: replacements,
     preventAssignment: true,
   })
+}
+
+function createProductionConfig(format) {
+  return createConfig(format, {
+    file: resolve(`dist/${name}.${format}.prod.js`),
+    format: outputConfigs[format].format,
+  })
+}
+
+function createMinifiedConfig(format) {
+  const { terser } = require('rollup-plugin-terser')
+
+  return createConfig(
+    format,
+    {
+      file: outputConfigs[format].file.replace(/\.js$/, '.prod.js'),
+      format: outputConfigs[format].format,
+    },
+    [
+      terser({
+        module: /^esm/.test(format),
+        compress: {
+          ecma: 2015,
+          pure_getters: true,
+        },
+        safari10: true,
+      }),
+    ]
+  )
 }
