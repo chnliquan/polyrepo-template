@@ -23,6 +23,7 @@
     "test": "npm run test:once -- --watch",
     "test:once": "jest --runInBand --colors --forceExit",
     "coverage": "<% if (locals.github) { %>codecov<% } else { %>jest --coverage<% } %>",
+    "prepare": "husky install",
     "release": "node scripts/release.js"
   },
   "dependencies": {
@@ -49,7 +50,7 @@
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "execa": "^5.1.1",
-    "husky": "^7.0.4",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.4",
     "minimist": "^1.2.5",
@@ -69,17 +70,10 @@
   "bugs": {
     "url": "<%= locals.gitHref %>/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "lint-staged": {
     "{<% if (locals.cli) { %>bin<% } %>,src,__tests__}/**/*.{js,ts}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "author": "<%= locals.author %>",
