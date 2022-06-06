@@ -15,7 +15,7 @@ $ yarn i <%= locals.name %>
 2. Usage
 
 ```ts
-import <%= locals.shortName %> from '<%= locals.name %>'
+import <%= locals.camelize(locals.shortName) %> from '<%= locals.name %>'
 ```
 
 # API

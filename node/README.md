@@ -13,8 +13,7 @@ $ yarn i <%= locals.name %>
 ```
 
 2. Usage
-   <% if (locals.cli) { %>
-
+<% if (locals.cli) { %>
 ```bash
 Usage: <%= locals.shortName %> <command> [options]
 
@@ -29,7 +28,7 @@ Commands:
 <% } else { %>
 
 ```ts
-import <%= locals.shortName %> from '<%= locals.name %>'
+import <%= locals.camelize(locals.shortName) %> from '<%= locals.name %>'
 ```
 
 <% } %>
