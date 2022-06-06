@@ -14,12 +14,13 @@ $ yarn i <%= locals.name %>
 
 2. Usage
 <% if (locals.cli) { %>
+
 ```bash
 Usage: <%= locals.shortName %> <command> [options]
 
 Options:
-  -v, --version                  output the current version
-  -h, --help                     display help for command
+  -v, --version output the current version
+  -h, --help    display help for command
 
 Commands:
 
