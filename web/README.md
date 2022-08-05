@@ -2,6 +2,7 @@
 
 <%= locals.description %>
 
+<% if (locals.github) { %>
 # Getting Started
 
 1. Installation
@@ -42,15 +43,84 @@ $ yarn i
 $ npm run dev
 ```
 
-4. Commit semantically
+4. [Commit semantically](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 
-https://www.conventionalcommits.org/en/v1.0.0/#summary
+```bash
+// good
+$ git commit -m 'feat: add some feature'
+$ git commit -m 'fix: fix some bug'
+
+// bad
+$ git commit -m 'add some feature'
+$ git commit -m 'fix some bug'
+```
 
 5. Publish
 
 ```bash
 $ npm run release
 ```
+
+<% } else { %>
+# 快速开始
+
+1. 安装
+
+```bash
+$ npm i <%= locals.name %> -S
+// or
+$ yarn i <%= locals.name %>
+```
+
+2. 使用
+
+```ts
+import <%= locals.camelize(locals.shortName) %> from '<%= locals.name %>'
+```
+
+# API
+
+
+# 开发
+
+1. 克隆仓库
+
+```bash
+$ git clone <%= locals.gitUrl %>
+```
+
+2. 安装依赖
+
+```bash
+$ npm i
+// or
+$ yarn i
+```
+
+3. 监听变化
+
+```bash
+$ npm run dev
+```
+
+4. [语义化提交Commit](https://www.conventionalcommits.org/en/v1.0.0/#summary)
+
+```bash
+// good
+$ git commit -m 'feat: add some feature'
+$ git commit -m 'fix: fix some bug'
+
+// bad
+$ git commit -m 'add some feature'
+$ git commit -m 'fix some bug'
+```
+
+5. 发布
+
+```bash
+$ npm run release
+```
+<% } %>
 
 # LICENSE
 

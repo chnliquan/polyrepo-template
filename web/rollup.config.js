@@ -124,6 +124,9 @@ function createConfig(format, output, plugins = []) {
         warn(msg)
       }
     },
+    treeshake: {
+      moduleSideEffects: false,
+    },
     watch: {
       exclude: ['node_modules/**', 'dist/**'],
     },
